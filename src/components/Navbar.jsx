@@ -6,7 +6,14 @@ import MobileMenu from "./MobileMenu";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
-  const navLinks = ["Home", "About", "Projects", "Skills", "Contact"];
+  // Add section IDs here
+  const navLinks = [
+    { name: "Home", path: "#home" },
+    { name: "About", path: "#about" },
+    { name: "Projects", path: "#projects" },
+    { name: "Skills", path: "#skills" },
+    { name: "Contact", path: "#contact" },
+  ];
 
   return (
     <nav className="fixed w-full z-50 bg-[#0f172a]/80 backdrop-blur-lg border-b border-white/10">
@@ -14,14 +21,15 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-20">
           
           {/* Logo */}
-          <motion.h1
+          <motion.a
+            href="#home"
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
-            className="text-3xl font-bold text-cyan-400"
+            className="text-3xl font-bold text-cyan-400 cursor-pointer"
           >
             Portfolio
-          </motion.h1>
+          </motion.a>
 
           {/* Desktop Menu */}
           <ul className="hidden md:flex items-center gap-10">
@@ -29,16 +37,20 @@ const Navbar = () => {
               <motion.li
                 key={index}
                 whileHover={{ scale: 1.1 }}
-                className="cursor-pointer text-gray-300 hover:text-cyan-400 transition duration-300"
               >
-                {link}
+                <a
+                  href={link.path}
+                  className="cursor-pointer text-gray-300 hover:text-cyan-400 transition duration-300"
+                >
+                  {link.name}
+                </a>
               </motion.li>
             ))}
           </ul>
 
           {/* Mobile Icon */}
           <div
-            className="md:hidden text-2xl cursor-pointer"
+            className="md:hidden text-2xl cursor-pointer text-white"
             onClick={() => setOpen(!open)}
           >
             {open ? <FaTimes /> : <FaBars />}
@@ -47,7 +59,11 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <MobileMenu open={open} navLinks={navLinks} />
+      <MobileMenu
+        open={open}
+        navLinks={navLinks}
+        setOpen={setOpen}
+      />
     </nav>
   );
 };
