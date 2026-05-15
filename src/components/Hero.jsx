@@ -73,7 +73,7 @@ export default function PortfolioHero() {
             </a>
 
             <a
-              href="/Samridhi-kumari.pdf"
+              href="/Samridhi-kumari(1).pdf"
               download
               className="group flex items-center gap-2 border border-white/20 hover:border-cyan-400 hover:text-cyan-400 px-6 py-3 rounded-full font-semibold transition-all duration-300"
             >

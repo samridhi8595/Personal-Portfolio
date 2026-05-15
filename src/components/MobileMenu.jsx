@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 
-const MobileMenu = ({ open, navLinks }) => {
+const MobileMenu = ({ open, navLinks, setOpen }) => {
   return (
     <AnimatePresence>
       {open && (
@@ -9,19 +9,19 @@ const MobileMenu = ({ open, navLinks }) => {
           animate={{ x: 0 }}
           exit={{ x: "100%" }}
           transition={{ duration: 0.4 }}
-          className="fixed top-20 right-0 w-full h-screen bg-[#111827] md:hidden"
+          className="fixed top-20 right-0 w-[70%] h-screen bg-[#0f172a] border-l border-white/10 md:hidden z-50"
         >
-          <ul className="flex flex-col items-center justify-center gap-10 h-full text-2xl">
+          <ul className="flex flex-col items-center gap-8 mt-16">
             {navLinks.map((link, index) => (
-              <motion.li
-                key={index}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="cursor-pointer hover:text-cyan-400 transition"
-              >
-                {link}
-              </motion.li>
+              <li key={index}>
+                <a
+                  href={link.path}
+                  onClick={() => setOpen(false)}
+                  className="text-xl text-gray-300 hover:text-cyan-400 transition duration-300"
+                >
+                  {link.name}
+                </a>
+              </li>
             ))}
           </ul>
         </motion.div>
@@ -30,4 +30,4 @@ const MobileMenu = ({ open, navLinks }) => {
   );
 };
 
-export default MobileMenu;
+export default MobileMenu;  
