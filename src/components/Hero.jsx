@@ -10,7 +10,7 @@ import profileImg from "../assets/samridhi.jpg";
 
 export default function PortfolioHero() {
   return (
-    <section className="relative min-h-screen bg-black text-white overflow-hidden">
+    <section id="home" className="relative min-h-screen bg-black text-white overflow-hidden">
       {/* Background Glow */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-72 h-72 bg-cyan-500/20 blur-3xl rounded-full" />
